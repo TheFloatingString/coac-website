@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	</head>
+
+	<body>
+		<form action="/create_user_endpoint" id="createUserForm" method="POST">
+			<input name="first_name" placeholder="first name">
+			<input name="last_name" placeholder="last name">
+			<input name="password" placeholder="password">
+			<select name="cars">
+				<option value="Champlain Student Association">Champlain Student Association</option>
+				<option value="Dawson Student Association">Dawson Student Association</option>
+				<option value="Marianopolis Student Union">Marianopolis Student Union</option>
+				<option value="Student Union of John Abbott College">Student Union of John Abbott College</option>
+				<option value="Vanier College Student Association">Vanier College Student Association</option>
+			</select>
+			<input name="email" placeholder="email">
+			<button value="submit" type="submit">Submit</button>
+
+		</form>
+<!-- 
+		<script>
+		// Attach a submit handler to the form
+		$( "#createUserForm" ).submit(function( event ) {
+		 
+		  // Stop form from submitting normally
+		  event.preventDefault();
+		 
+		  // Get some values from elements on the page:
+		  var $form = $( this ),
+		    first_name_val = $form.find( "input[name='first_name']" ).val(),
+		    url = $form.attr( "action" );
+		 
+		  // Send the data using post
+		  var posting = $.post( url, { first_name: first_name_val } );
+		 
+		  // Put the results in a div
+		  posting.done(function( data ) {
+		  	alert('Done!')
+		  });
+		});
+		</script>
+ -->
+	</body>
+
+</html>
