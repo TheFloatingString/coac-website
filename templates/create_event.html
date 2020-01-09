@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create Event
+{% endblock %}
+
+{% block content %}
+<a style="margin-left:15%" href="/">< Home</a>
+<form action="{{ url_for('create_event') }}" method="post">
+	<p><b>Event Creator</b></p>
+
+	<div class="form-group">
+	    <label for="exampleInputEmail1">Event name *</label>
+		<input name="name" placeholder="Event name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+	</div>
+	<div class="form-group">
+	    <label for="exampleInputEmail1">Location name and address *</label>
+		<input name="location" placeholder="Event address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+	</div>
+	<div class="form-group">
+	    <label for="exampleInputEmail1">Event website</label>
+		<input name="website" placeholder="Event website" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+	</div>
+	<div class="form-group">
+	    <label for="exampleInputEmail1">Start time *</label>
+		<input name="datetime_start" placeholder="Start time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="datetime-local" required>
+	</div>
+	<div class="form-group">
+	    <label for="exampleInputEmail1">End time *</label>
+		<input name="datetime_end" placeholder="End time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="datetime-local" required>
+	</div>
+	<div class="form-group">
+	    <label for="exampleInputEmail1">Author *</label>
+		<select class="form-control" name="student_union">
+			<option value="Champlain Student Association">Champlain Student Association</option>
+			<option value="Dawson Student Association">Dawson Student Association</option>
+			<option value="Marianopolis Student Union">Marianopolis Student Union</option>
+			<option value="Student Union of John Abbott College">Student Union of John Abbott College</option>
+			<option value="Vanier College Student Association">Vanier College Student Association</option>
+		</select required>
+	</div>
+	<div class="form-group">
+	    <label for="exampleInputEmail1">Admin password *</label>
+		<input name="password" placeholder="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="password" required>
+	</div>
+	<button value="submit" type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+</form>
+
+{% endblock %}
