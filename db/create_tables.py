@@ -5,12 +5,17 @@ import os
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from src import read_credentials
+
 import bcrypt
 import uuid
 
 import random
 
-engine = create_engine(os.environ["DATABASE_URL"], echo=True)
+
+env_keys = read_credentials.return_keys()
+
+engine = create_engine(env_keys["DATABASE_URL"], echo = True)
 
 meta = MetaData()
 Base = declarative_base()

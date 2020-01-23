@@ -4,6 +4,7 @@ import os
 import json
 
 from db.create_tables import Event, StudentUnion, User
+from src import read_credentials
 
 import bcrypt
 
@@ -21,8 +22,10 @@ from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 
 
+env_keys = read_credentials.return_keys()
+
 # Postgres
-engine = create_engine(os.environ["DATABASE_URL"], echo = True)
+engine = create_engine(env_keys["DATABASE_URL"], echo = True)
 
 Session = sessionmaker()
 Session.configure(bind=engine)
@@ -31,7 +34,7 @@ session = Session()
 
 # Flask app
 app = Flask(__name__)
-app.secret_key = os.environ["SECRET_KEY"]
+app.secret_key = env_keys["SECRET_KEY"]
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
