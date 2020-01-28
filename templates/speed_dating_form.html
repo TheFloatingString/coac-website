@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+COAC
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="/create_letter">
+	<div class="form-group">
+		<p style="text-align: center;"><b>COAC Speed Dating</b></p>
+		<p>Welcome to the Coalition of Anglophone Colleges (COAC) speed dating form! Want to express your feelings for someone waiting for you at another COAC college? Now is your chance!</p>
+		<p>Fill out this form and see what awaits!</p>
+	</div>
+	<hr>
+	<div class="form-group">
+	    <label>Your letter</label>
+		<textarea style="height: 400px;" class="form-control" placeholder="Your letter" name="letter"></textarea>
+	</div>
+	<div class="form-group">
+	    <label>Your name</label>
+		<input placeholder="Your email" class="form-control" name="name">
+	</div>
+	<div class="form-group">
+	    <label>Your current cégep</label>
+		<select class="form-control" name="cegep">
+			<option value="Champlain College Saint-Lambert">Champlain College Saint-Lambert</option>
+			<option value="Dawson College">Dawson College</option>
+			<option value="John Abbott College">John Abbott College</option>
+			<option value="Marianopolis College">Marianopolis College</option>
+			<option value="Vanier College">Vanier College</option>
+		</select required>
+	</div>
+	<div class="form-group">
+	    <label>Your email</label>
+		<input placeholder="Your email" class="form-control" name="email">
+	</div>
+	<div class="form-group">
+	    <label>Notes about you</label>
+		<textarea style="height: 100px;" class="form-control" placeholder="Notes about you" name="notes"></textarea>
+	</div>
+	<div class="form-group">
+		<p><b>Terms of usage</b></p>
+		<p style="text-align: justify;">If the current letter is deemed offensive or inappropriate, or if the writer of the message is not a currently enrolled in a COAC cégep as a student, the administrators of the website of the Coalition of Anglophone Colleges (COAC) reserve the right to remove the current letter without notifying the sender.</p>
+		<input type="checkbox" id="inlineCheckbox1" value="option1" required> I have read the <b>terms of usage</b> and agree.
+	</div>
+	<button value="submit" type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+</form>
+{% endblock %}
