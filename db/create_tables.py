@@ -5,7 +5,7 @@ import os
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from src import read_credentials
+# from src import read_credentials
 
 import bcrypt
 import uuid
@@ -13,9 +13,9 @@ import uuid
 import random
 
 
-env_keys = read_credentials.return_keys()
+# env_keys = read_credentials.return_keys()
 
-engine = create_engine(env_keys["DATABASE_URL"], echo = True)
+engine = create_engine(os.environ["DATABASE_URL"], echo = True)
 
 meta = MetaData()
 Base = declarative_base()
@@ -48,12 +48,12 @@ class Event(Base):
 class StudentUnion(Base):
 	__tablename__ = "student_unions"
 
-	id = Column(Integer, primary_key=True, unique=True, nullable=False, default=int(uuid.uuid4()))
+	id = Column(Integer, primary_key=True, unique=True, nullable=False, default=random.randint(0,2**30))
 	name = Column(String)
 
 class User(Base):
 	__tablename__ = "user"
-	id = Column(Integer, primary_key=True, unique=True, nullable=False, default=int(uuid.uuid4()))
+	id = Column(Integer, primary_key=True, unique=True, nullable=False, default=random.randint(0,2**30))
 	email = Column(String)
 	first_name = Column(String)
 	last_name = Column(String)
@@ -73,6 +73,16 @@ class User(Base):
 	def check_password(self, password):
 		return check_password_hash(password, self.password_hash)
 
+
+class Letter(Base):
+	__tablename__ = "letters"
+	id = Column(Integer, primary_key=True, unique=True, nullable=False, default=random.randint(0,2**30))
+	name = Column(String)
+	email = Column(String)
+	letter = Column(String)
+	cegep = Column(String)
+	notes = Column(String)
+	creation_date = Column(DateTime)
 
 if __name__ == "__main__":
 	Base.metadata.create_all(engine)
