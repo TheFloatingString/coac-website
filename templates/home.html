@@ -6,28 +6,34 @@ COAC
 
 {% block content %}
 
-<div class="standard-spacing">
-	<p><i>Welcome to COAC!</i></p>
-	<p>COAC events</p>
+<div id="home-splash">
+	<p style="color:white;font-size: 40px; text-shadow: 2px 2px 20px black;">Welcome to COAC!</p>
+	<p style="color:white;">The Coalition of Anglophone Colleges of Montreal</p>
+	<a class="btn btn-outline-light" href="/about" >Learn more</a>
 </div>
-<div id="here_table"></div>
 
-<script>
-var data = {{data | safe}};
-console.log(data['name'].length)
+<div class="container">
+	<div class="row">
+		<div class="col-md home-col">
+			<center>About</center>
+			<center><i style="margin:3%" class="material-icons md-48">accessibility</i></center>
+			<center><a class="btn btn-outline-dark" href="/about">Learn more about us!</a></center>
 
-var content = "<table class=\"table table-bordered\">"
-content += "<tr><th>Date</th><th>Name</th><th>Website</th></tr>";
+		</div>
+		<div class="col-md home-col">
+			<center>Initiatives</center>
+			<center><i style="margin:3%" class="material-icons md-48">timeline</i></center>
+			<center><a class="btn btn-outline-dark" href="/initiatives">Access our vision!</a></center>
 
-for(i=0; i<data['name'].length; i++){
-    content += '<tr><td>' + data['datetime_start'][i] + '</td><td>'+ data['name'][i] + '</td><td>' + data['website'][i] + '</tr>';
-}
-content += "</table>"
+		</div>
+		<div class="col-md home-col">
+			<center>Events</center>
+			<center><i style="margin:3%" class="material-icons md-48">event</i></center>
+			<center><a class="btn btn-outline-dark" href="/events">Discover events!</a></center>
 
-console.log(content);
-$('#here_table').append(content);
-
-</script>
+		</div>
+	</div>
+</div>
 
 
 {% endblock %}

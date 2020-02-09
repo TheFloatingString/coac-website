@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+COAC
+{% endblock %}
+
+{% block content %}
+
+<div class="standard-spacing">
+	<p>COAC events</p>
+</div>
+<div id="here_table"></div>
+
+<script>
+	var data = {{data | safe}};
+	console.log(data['name'].length)
+
+	var content = "<table class=\"table table-bordered\">"
+	content += "<tr><th>Date</th><th>Name</th><th>Website</th></tr>";
+
+	for(i=0; i<data['name'].length; i++){
+	    content += '<tr><td>' + data['datetime_start'][i] + '</td><td>'+ data['name'][i] + '</td><td>' + data['website'][i] + '</tr>';
+	}
+	content += "</table>"
+
+	console.log(content);
+	$('#here_table').append(content);
+
+</script>
+
+
+{% endblock %}
