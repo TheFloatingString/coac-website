@@ -129,6 +129,10 @@ def create_letter():
 						cegep=request.form["cegep"],
 						notes=request.form["notes"],
 						creation_date=datetime.now())
+		if request.form["share_identity"] == "False":
+			letter.share_identity=False 
+		elif request.form["share_identity"] == "True":
+			letter.share_identity=True
 		session.add(letter)
 		session.commit()
 		return "Letter sent! <a href=\"/speed_dating_form\">Write another response</a>"
@@ -158,7 +162,7 @@ def check_letters():
 	counter = 1
 	return_txt = ''
 	for letter in session.query(Letter):
-		return_txt += "<p><b>%s</b> %s</p>" %(counter, letter.letter)
+		return_txt += "<p><b>%s</b> %s %s</p>" %(counter, letter.letter, letter.share_identity)
 		counter += 1
 	return return_txt
 
