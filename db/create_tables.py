@@ -1,4 +1,4 @@
-from sqlalchemy import Table, Column, Integer, Float, String, MetaData, DateTime
+from sqlalchemy import Table, Column, Integer, Float, String, MetaData, DateTime, Boolean
 from sqlalchemy	import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 import os
@@ -83,6 +83,7 @@ class Letter(Base):
 	cegep = Column(String)
 	notes = Column(String)
 	creation_date = Column(DateTime)
+	share_identity = Column(Boolean)
 
 if __name__ == "__main__":
 	Base.metadata.create_all(engine)
