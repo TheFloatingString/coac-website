@@ -28,7 +28,6 @@ engine = create_engine(os.environ["DATABASE_URL"], echo = True)
 Session = sessionmaker()
 Session.configure(bind=engine)
 session = Session()
-session.rollback()
 
 
 # Flask app
