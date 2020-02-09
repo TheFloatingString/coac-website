@@ -18,11 +18,12 @@ COAC
 	</div>
 	<div class="form-group">
 	    <label>Your name</label>
-		<input placeholder="Your email" class="form-control" name="name">
+		<input placeholder="Your name" class="form-control" name="name">
 	</div>
 	<div class="form-group">
 	    <label>Your current cégep</label>
-		<select class="form-control" name="cegep">
+		<select class="form-control" name="cegep" required>
+		    <option selected value="-- select an option --"> -- select an option -- </option>
 			<option value="Champlain College Saint-Lambert">Champlain College Saint-Lambert</option>
 			<option value="Dawson College">Dawson College</option>
 			<option value="John Abbott College">John Abbott College</option>
