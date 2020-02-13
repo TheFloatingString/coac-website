@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+COAC
+{% endblock %}
+
+{% block content %}
+
+<div class="standard-spacing">
+	<p>Love letter responses</p>
+</div>
+<div id="here_table"></div>
+
+<script>
+	var data = {{data | safe}};
+	console.log(data);
+	console.log(data['id'])
+
+	var content = "<table class=\"table table-bordered\">"
+	content += "<tr><th>Count</th><th>ID</th><th>Content</th><th>School</th></tr>";
+
+	for(i=0; i<data['id'].length; i++){
+	    content += '<tr><td>' + (i+1) + '</td><td>' + data['id'][i] + '</td><td>'+ data['content'][i] + '</td><td>' + data['cegep'][i] + '</td></tr>';
+	}
+	content += "</table>"
+
+	console.log(content);
+	$('#here_table').append(content);
+
+</script>
+
+
+{% endblock %}

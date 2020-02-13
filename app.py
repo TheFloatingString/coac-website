@@ -162,9 +162,24 @@ def check_letters():
 	counter = 1
 	return_txt = ''
 	for letter in session.query(Letter):
-		return_txt += "<p><b>%s</b> %s %s</p>" %(counter, letter.letter, letter.share_identity)
+		return_txt += "<p><b>%s</b> %s %s %s %s %s</p>" %(counter, letter.letter, letter.share_identity, letter.name, letter.notes, letter.cegep)
 		counter += 1
 	return return_txt
+
+@app.route("/check_letters_edit")
+def check_letters_edit():
+	return_dict = dict()
+	return_dict["id"] = list()
+	return_dict["content"] = list()
+	return_dict["cegep"] = list()
+
+	for letter in session.query(Letter):
+		return_dict["id"].append(letter.id)
+		return_dict["content"].append(letter.letter + ' ' + letter.notes)
+		return_dict["cegep"].append(letter.cegep)
+
+	return render_template("check_letters.html", data=return_dict)
+
 
 if __name__ == "__main__":
 	app.run(debug=True, host="0.0.0.0", port=5000)
