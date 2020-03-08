@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+COAC
+{% endblock %}
+
+{% block content %}
+<div class="standard-spacing">
+
+
+	<p><b>The Billboard</b></p>
+	<p>Welcome to the Billboard, a virtual platform to allow students from COAC colleges to connect, share ideas and form partnerships.</p>
+		
+	<form action="/billboard" method="POST">
+		<div class="form-group">
+			<input class="form-control" placeholder="What's on your mind?">
+			<button style="margin-top: 10px;" class="btn btn-block btn-outline-success" type="submit" value="submit">Post</button>
+		</div>
+	</form>
+
+
+</div>
+
+
+{% endblock %}
