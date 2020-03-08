@@ -3,11 +3,11 @@ import os
 
 import json
 
-from db.create_tables import Event, StudentUnion, User, Letter
+from db.create_tables import Event, StudentUnion, User, Letter, BillboardPost
 
 import bcrypt
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import flask
 import flask_login 
 
@@ -182,8 +182,25 @@ def check_letters_edit():
 
 @app.route("/billboard")
 def billboard():
-	return render_template("billboard.html")
+	posts = dict()
+	posts["description"] = [post.description for post in session.query(BillboardPost)]
+	print(posts)
+	return render_template("billboard.html", posts=posts)
 
+# endpoint for GET requests
+@app.route("/get_billboard_messages", methods=["GET"])
+def get_billboard_messages():
+	return [post.description for post in session.query(BillboardPost)]
+
+@app.route("/billboard_post", methods=["GET", "POST"])
+def billboard_post():
+	if request.method == "POST":
+		description = request.form["description"]
+		post = BillboardPost()
+		post.create_post(description)
+		session.add(post)
+		session.commit()
+		return redirect("/billboard")
 
 if __name__ == "__main__":
 	app.run(debug=True, host="0.0.0.0", port=5000)
