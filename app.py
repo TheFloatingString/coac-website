@@ -180,6 +180,10 @@ def check_letters_edit():
 
 	return render_template("check_letters.html", data=return_dict)
 
+@app.route("/billboard")
+def billboard():
+	return render_template("billboard.html")
+
 
 if __name__ == "__main__":
 	app.run(debug=True, host="0.0.0.0", port=5000)
