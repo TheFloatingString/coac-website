@@ -11,13 +11,42 @@ COAC
 	<p><b>The Billboard</b></p>
 	<p>Welcome to the Billboard, a virtual platform to allow students from COAC colleges to connect, share ideas and form partnerships.</p>
 		
-	<form action="/billboard" method="POST">
+	<form action="/billboard_post" method="POST">
 		<div class="form-group">
-			<input class="form-control" placeholder="What's on your mind?">
+			<label>Add your message and a way to reach out to you</label>
+			<input class="form-control" placeholder="What's on your mind and how to contact?" name="description">
 			<button style="margin-top: 10px;" class="btn btn-block btn-outline-success" type="submit" value="submit">Post</button>
 		</div>
 	</form>
 
+	<div class="billboard-posts-content" style="margin-top: 50px;">
+		<center><p><b>Billboard Posts</b></p></center>
+		<br>
+		<div class="card-columns">
+			<div id="here_cards">
+				
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var data = {{posts | safe}};
+		console.log(data['description'].length)
+
+		var content = "";
+
+		for(i=0; i<data['description'].length; i++){
+		    content += `		<div class="card">
+			<div class="card-body">
+				<p class="card-text">`+data["description"][i]+`</p>
+			</div>
+		</div>`;
+		}
+
+		console.log(content);
+		$('#here_cards').append(content);
+
+	</script>
 
 </div>
 
