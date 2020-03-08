@@ -11,6 +11,7 @@ import bcrypt
 import uuid
 
 import random
+import datetime
 
 
 # env_keys = read_credentials.return_keys()
@@ -84,6 +85,19 @@ class Letter(Base):
 	notes = Column(String)
 	creation_date = Column(DateTime)
 	share_identity = Column(Boolean)
+
+
+class BillboardPost(Base):
+	__tablename__ = "billboardposts"
+	id = Column(Integer, primary_key=True, unique=True, nullable=False, default=random.randint(0,2**30))
+	description = Column(String)
+	date_created = Column(DateTime)
+	date_modified = Column(DateTime)
+
+	def create_post(self, description):
+		self.description = description
+		self.date_created = datetime.datetime.now()
+		self.date_modified = datetime.datetime.now()
 
 if __name__ == "__main__":
 	Base.metadata.create_all(engine)
